@@ -1,0 +1,52 @@
+# Reload the bash_profile
+alias reload='. $HOME/.bash_profile && echo "Reloaded ~/.bash_profile"'
+
+alias cd..="cd .."
+
+# Web
+
+#alias elasticsearch="elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml"
+
+# Pretty print JSON
+
+function json() {
+	curl "$@" | python -mjson.tool
+}
+
+# Open a new tab with the current directory
+function tab() {
+  osascript 2>/dev/null <<EOF
+    tell application "System Events"
+      tell process "Terminal" to keystroke "t" using command down
+    end
+    tell application "Terminal"
+      activate
+      do script with command "cd \"$PWD\"; $*" in window 1
+    end tell
+EOF
+}
+
+# Projects
+
+# Dev
+
+# Serves a simple HTTP server on localhost:8000. Run from any directory.
+alias pyserver='python -m SimpleHTTPServer'
+
+# Start MongoDB server
+alias mongo_start='mongod run --config /usr/local/Cellar/mongodb/2.0.2-x86_64/mongod.conf'
+# Serves a simple PHP HTTP server on localhost:8000. Run from any directory.
+alias phpserver='php -S localhost:8000'
+
+# Start MongoDB server
+alias mongo_start='mongod --config /usr/local/etc/mongod.conf'
+
+# Start Memcached
+#alias memcached='/usr/local/bin/memcached'
+
+#alias mysql_start='$HOME/.applications/homebrew/Cellar/mysql/5.1.47/share/mysql/mysql.server start'
+#alias mysql_stop='$HOME/.applications/homebrew/Cellar/mysql/5.1.47/share/mysql/mysql.server stop'
+
+# Start and stop PostgreSQL server
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'

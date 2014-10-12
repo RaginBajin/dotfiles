@@ -1,0 +1,18 @@
+.DS_Store
+*./.DS_Store
+*/*/.DS_Store
+Thumbs.db
+._*
+build/*
+pkg/*
+.svn
+*.pbxuser
+*.move1v3
+*~
+log/*
+<<<<<<< HEAD
+tmp/**/*
+=======
+tmp/**/*
+.rake_t_cache
+>>>>>>> 979707349851e0bdff0270303f49f11dea9c2bbc
